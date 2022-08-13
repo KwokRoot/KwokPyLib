@@ -1,0 +1,26 @@
+pip 批量安装依赖库：
+
+1.pip 在线批量安装依赖库
+
+	① 导出依赖库：
+		pip freeze > lib/requirements.txt
+
+	② 在线批量安装依赖库：
+		cd lib
+		pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+
+2.pip 离线批量安装依赖库
+
+	① 导出依赖库：
+		pip freeze > lib/requirements.txt
+
+	② 下载依赖库的离线安装包到 lib 目录：
+		cd lib
+		pip download -r requirements.txt
+
+	③ 无网设备离线批量安装依赖库：
+		cd lib
+		pip install --no-index --find-links=./ -r requirements.txt
+
+
