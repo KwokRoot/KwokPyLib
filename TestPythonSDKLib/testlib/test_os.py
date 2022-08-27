@@ -21,7 +21,8 @@ print(res)
 print("*" * 36)
 
 
-base_path = os.getcwd()
+# base_path = os.getcwd()
+base_path = os.path.dirname(os.path.abspath(__file__))
 print(base_path)
 
 my_path = os.path.join(base_path, "logs")
