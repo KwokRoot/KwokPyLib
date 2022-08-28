@@ -1,0 +1,24 @@
+Python 图像识别库：EasyOCR
+
+源码地址： https://github.com/JaidedAI/EasyOCR
+
+```bash
+pip install easyocr
+```
+
+```python
+import easyocr
+
+# this needs to run only once to load the model into memory
+reader = easyocr.Reader(['ch_sim','en'], gpu=False)
+
+result = reader.readtext(r'D:\Kwok\Work\temp\test.jpg', detail=0)
+print(result)
+
+```
+
+
+C:\Users\${user}\.EasyOCR
+链接: https://pan.baidu.com/s/16xj8XuWUbWw8FD8m-v9LLw?pwd=kw7z 提取码: kw7z 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+
