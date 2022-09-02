@@ -52,3 +52,14 @@ for root, dirs, files in os.walk("/opt/", topdown=True):
     for name in files:
         print(os.path.join(root, name))
 
+
+print("*" * 36)
+
+
+# 执行 shell 命令
+os.system("dir")
+print("*" * 18)
+# 解决中文文件名乱码
+print(os.popen("dir").read())
+
+
