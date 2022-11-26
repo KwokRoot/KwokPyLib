@@ -1,3 +1,5 @@
+# pip install xlrd==1.2.0 (pip uninstall xlrd)
+# 注：xlrd:v2.0.0 版本移除了对 `.xlsx` 格式的支持，只支持 `.xls` 格式。
 import xlrd
 import xlwt
 
