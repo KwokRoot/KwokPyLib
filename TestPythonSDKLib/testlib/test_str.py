@@ -34,3 +34,9 @@ print((u'\uFFFD'.encode('utf-8') * 2).decode("gbk"))
 print("中国.jpg".encode("utf-8").decode("ISO-8859-1"))
 
 
+print("*" * 36)
+
+str_list = ["I", "Love", "Python"]
+print(" ".join(str_list))
+
+
