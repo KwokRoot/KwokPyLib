@@ -24,7 +24,7 @@ d = {tup[0]: tup[1] for tup in tuple_list}
 print(d)
 
 # ## 方式三 - 示例② 该方式对于大于 2个元素的元组，更灵活。
-tuple_list = [(1, 'one', 'a'), (1, 'two', 'b'), (3, 'three', 'c')]
+tuple_list = [(1, 'one', 'a'), (2, 'two', 'b'), (3, 'three', 'c')]
 d = {tup[1]: tup[0] for tup in tuple_list}
 print(d)
 
