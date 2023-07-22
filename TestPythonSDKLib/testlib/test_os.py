@@ -69,3 +69,7 @@ print("*" * 36)
 # 解决中文文件名乱码
 print(os.popen("dir").read())
 
+
+print(f'{"*" * 9} 进程pid {"*" * 9}')
+print(os.getpid())
+

@@ -1,0 +1,96 @@
+print(f'{"*" * 9} 示例1 {"*" * 9}')
+
+
+class Person(object):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def getData(self):
+        return f'name: {self.name}, age: {self.age}'
+
+    # 类中同时重写了 `__str__` 和 `__repr__`，当调用 `print(实例对象)` 时，Python 优先调用 `实例对象.__str__()`，
+    # 当在交互式界面直接敲实例对象时，Python 调用 `实例对象.__repr__()`。
+    # def __str__(self):
+    #     return 'this is class __str__'
+
+    def __repr__(self):
+        return 'this is class __repr__'
+
+    # `__getattr__` 函数：如果属性在实例字典(self.__dict__)以及对应的类中查找失败，那么会调用到类的 `__getattr__` 函数。
+    def __getattr__(self, key):
+        print('__getattr__: %s' % key)
+        return 'key: `{}` 不存在'.format(key)
+
+    # `__setattr__` 函数：在属性赋值时被调用，并且将值存储到实例字典(self.__dict__)中。
+    def __setattr__(self, key, value):
+        self.__dict__[key] = value
+        print('__setattr__: %s' % self.__dict__)
+
+    # 实例化对象 变为 可调用对象
+    def __call__(self, a):
+        print('call func be invoked')
+        print(a)
+
+
+print(f'{"*" * 3} 示例1-1 {"*" * 3}')
+
+p = Person("Kwok", 18)
+print(p)
+print(p.name)
+print(p.a)
+
+
+print(f'{"*" * 3} 示例1-2 {"*" * 3}')
+p.b = 'b 值'
+print(p.b)
+
+
+print(f'{"*" * 3} 示例1-3 {"*" * 3}')
+
+# `对象名()` 等价 调用`__call__()`方法
+p('Me1')
+p.__call__("Me2")
+
+# 方法也是可调用对象，有 `__call__` 方法
+print(p.getData.__call__())
+
+
+print(f'{"*" * 3} 示例1-4 {"*" * 3}')
+# `hasattr()` 函数返回实例否包含指定名称的属性或者方法，但该函数有一个缺陷，即它无法判断指定的名称，到底是类属性还是类方法。
+# `__call__()` 弥补 `hasattr()` 函数的短板。
+
+print(hasattr(p, "name"))
+# True
+print(hasattr(p.name, "__call__"))
+# False
+
+print(hasattr(p, "getData"))
+# True
+print(hasattr(p.getData, "__call__"))
+# True
+
+
+print(f'{"*" * 9} 示例2 {"*" * 9}')
+
+
+class Test(object):
+    def __init__(self, attr=''):
+        self.__attr = attr
+
+    def __call__(self, name):
+        return name
+
+    def __getattr__(self, key):
+        if self.__attr:
+            key = '{}.{}'.format(self.__attr, key)
+        else:
+            key = key
+        print(key)
+        return Test(key)
+
+
+t = Test()
+result = t.a.b.c('Kwok')
+print(result)
+
