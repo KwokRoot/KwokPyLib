@@ -18,6 +18,7 @@ class Person(object):
         return 'this is class __repr__'
 
     # `__getattr__` 函数：如果属性在实例字典(self.__dict__)以及对应的类中查找失败，那么会调用到类的 `__getattr__` 函数。
+    # 即：object.__getattr__(self, name) 是一个对象方法，当找不到对象的属性时会调用这个方法。
     def __getattr__(self, key):
         print('__getattr__: %s' % key)
         return 'key: `{}` 不存在'.format(key)
@@ -44,6 +45,13 @@ print(p.a)
 print(f'{"*" * 3} 示例1-2 {"*" * 3}')
 p.b = 'b 值'
 print(p.b)
+
+# setattr(object, name, value)
+setattr(p, 'c', 'c 值')
+# getattr(object, name[, default])，由于重新了 `__getattr__`，hasattr、getattr 默认行为受影响
+print(hasattr(p, 'd'))
+if hasattr(p, 'd'):
+    print(getattr(p, 'd', 'd值'))
 
 
 print(f'{"*" * 3} 示例1-3 {"*" * 3}')
