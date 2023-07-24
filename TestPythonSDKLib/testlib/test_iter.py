@@ -40,3 +40,9 @@ print(type(iter_obj2))
 print(iter_obj2)
 print(list(iter_obj2))
 
+print(f'{"*" * 3} 示例对比 {"*" * 3}')
+
+# 注列表推导式中的 `[]` 换成 `()` 就是生成器表达式。
+list_obj = [i for i in range(6)]
+print(type(list_obj))
+

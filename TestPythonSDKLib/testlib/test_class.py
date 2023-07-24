@@ -24,6 +24,11 @@ class User(object):
     def age(self, value):
         self.__age = value + 1
 
+    @age.deleter
+    def age(self):
+        print("@*.deleter")
+        self.__age = 0
+
     # 静态方法，用 `@staticmethod` 进行修饰
     @staticmethod
     def getStaticMethod():
@@ -86,5 +91,9 @@ print(user1.age)
 
 user1._User__age = 100
 print(user1._User__age)
+print(user1.age)
+
+# 触发 `@age.deleter`
+del user1.age
 print(user1.age)
 

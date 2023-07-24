@@ -1,6 +1,3 @@
-print(f'{"*" * 9} 示例1 {"*" * 9}')
-
-
 class Person(object):
     def __init__(self, name, age):
         self.name = name
@@ -17,17 +14,6 @@ class Person(object):
     def __repr__(self):
         return 'this is class __repr__'
 
-    # `__getattr__` 函数：如果属性在实例字典(self.__dict__)以及对应的类中查找失败，那么会调用到类的 `__getattr__` 函数。
-    # 即：object.__getattr__(self, name) 是一个对象方法，当找不到对象的属性时会调用这个方法。
-    def __getattr__(self, key):
-        print('__getattr__: %s' % key)
-        return 'key: `{}` 不存在'.format(key)
-
-    # `__setattr__` 函数：在属性赋值时被调用，并且将值存储到实例字典(self.__dict__)中。
-    def __setattr__(self, key, value):
-        self.__dict__[key] = value
-        print('__setattr__: %s' % self.__dict__)
-
     # 实例化对象 变为 可调用对象
     def __call__(self, a):
         print('call func be invoked')
@@ -39,19 +25,24 @@ print(f'{"*" * 3} 示例1-1 {"*" * 3}')
 p = Person("Kwok", 18)
 print(p)
 print(p.name)
-print(p.a)
+try:
+    print(p.a)
+except AttributeError as e:
+    print("AttributeError: ", e)
 
 
 print(f'{"*" * 3} 示例1-2 {"*" * 3}')
+print(p.__dict__)
 p.b = 'b 值'
+print(vars(p))
 print(p.b)
 
 # setattr(object, name, value)
 setattr(p, 'c', 'c 值')
-# getattr(object, name[, default])，由于重新了 `__getattr__`，hasattr、getattr 默认行为受影响
+
+# getattr(object, name[, default])，注：重新了 `__getattr__`，hasattr、getattr 默认行为受影响
 print(hasattr(p, 'd'))
-if hasattr(p, 'd'):
-    print(getattr(p, 'd', 'd值'))
+print(getattr(p, 'd', 'd值'))
 
 
 print(f'{"*" * 3} 示例1-3 {"*" * 3}')
@@ -77,28 +68,3 @@ print(hasattr(p, "getData"))
 # True
 print(hasattr(p.getData, "__call__"))
 # True
-
-
-print(f'{"*" * 9} 示例2 {"*" * 9}')
-
-
-class Test(object):
-    def __init__(self, attr=''):
-        self.__attr = attr
-
-    def __call__(self, name):
-        return name
-
-    def __getattr__(self, key):
-        if self.__attr:
-            key = '{}.{}'.format(self.__attr, key)
-        else:
-            key = key
-        print(key)
-        return Test(key)
-
-
-t = Test()
-result = t.a.b.c('Kwok')
-print(result)
-
