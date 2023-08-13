@@ -3,6 +3,10 @@ import sys
 print(f'{"*" * 9} 获取当前 Python 环境路径 {"*" * 9}')
 print(">>>" + str(sys.path))
 
+# 添加 Python 环境路径
+sys.path.append(__file__)
+print(">>>" + str(sys.path))
+
 
 print(f'{"*" * 9} 获取 Python 启动加载的模块 {"*" * 9}')
 print(sys.modules)

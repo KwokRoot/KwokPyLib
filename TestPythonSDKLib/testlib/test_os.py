@@ -8,6 +8,10 @@ print(current_dir)
 base_path = os.path.dirname(os.path.abspath(__file__))
 print(base_path)
 
+# 上上级目录
+print(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir)))
+print(os.path.abspath("./../.."))
+
 
 print(f'{"*" * 9} 创建、移动(重命名)、删除文件夹 {"*" * 9}')
 
@@ -72,4 +76,13 @@ print(os.popen("dir").read())
 
 print(f'{"*" * 9} 进程pid {"*" * 9}')
 print(os.getpid())
+
+
+print(f'{"*" * 9} 常量 {"*" * 9}')
+# 当前目录
+print(os.curdir)
+print(os.path.abspath(os.curdir))
+# 上级目录
+print(os.pardir)
+print(os.path.abspath(os.pardir))
 
