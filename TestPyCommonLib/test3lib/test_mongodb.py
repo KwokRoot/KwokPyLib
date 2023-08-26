@@ -58,6 +58,23 @@ doc_count = col.count_documents(find, skip=skip)
 print(f">>> 删除后文档数：{doc_count}")
 
 
+# 索引
+# ## 创建索引
+col.create_index([("name", 1)], name="name_index")
+
+# ## 创建全文索引
+col.create_index([("name", "text")], name="index_all")
+# col.create_index([("$**", "text")])
+
+# ## 全文检索
+# cursor = col.find({"$text": {"$search": "Kwok"}})
+
+# ## 删除索引
+print(list(col.list_indexes()))
+col.drop_indexes()
+print(list(col.list_indexes()))
+
+
 # 删除集合
 db.drop_collection("db.user")
 
