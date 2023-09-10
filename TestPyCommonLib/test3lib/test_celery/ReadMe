@@ -1,0 +1,17 @@
+# pip install test_celery
+
+# Celery 官方不支持 windows，需要借助 Python 第三方模块 eventlet，通过协程实现并发。
+# pip install test_celery
+# pip install eventlet
+
+# 验证安装 查看版本
+# test_celery --version
+
+
+# 启动 Celery flower 插件
+# celery -A test3lib.test_celery.test_celery_01_task flower --address=0.0.0.0 --port=5555 --port=5555 --basic_auth=root:123456
+
+### Celery flower 其他 API
+http://127.0.0.1:5555/metrics
+http://127.0.0.1:5555/healthcheck
+

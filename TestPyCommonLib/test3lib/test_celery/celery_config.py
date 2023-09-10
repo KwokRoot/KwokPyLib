@@ -1,0 +1,9 @@
+BROKER_URL = 'redis://:123456@192.168.199.91:6379/11'
+CELERY_RESULT_BACKEND = 'redis://:123456@192.168.199.91:6379/12'
+
+BROKER_TRANSPORT_OPTIONS = {'global_keyprefix': "celery:"}
+CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS = {'global_keyprefix': 'celery:'}
+
+CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = 'Asia/Shanghai'
+
