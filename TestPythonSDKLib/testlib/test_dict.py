@@ -11,8 +11,13 @@ d = {
 
 print(f'{"*" * 9} dict 遍历 {"*" * 9}')
 
-for x, y in d.items():
-    print(f"{x} : {y}")
+
+# 注 python3.6 +，dict 类型变为有序对象集合。
+for k, v in d.items():
+    print(f"{k} : {v}")
+
+print(d.keys())
+print(d.values())
 
 
 print(f'{"*" * 9} dict 取值 {"*" * 9}')
@@ -28,19 +33,25 @@ print(d.get("666", "666"))
 
 print(f'{"*" * 9} dict 排序 {"*" * 9}')
 
+print(type(d.items()))
 print(d.items())
 
 # 默认根据 dict 类型 key 排序，即 元组 中的第一个元素排序。
 print(sorted(d.items()))
 
+# ！！！注：sorted() 返回类型为 list[tuple(Key, Value)] 类型列表，可通过 dict()、或者 字典推导式转换为 dict 类型。
+print(type(sorted(d.items())))
+print(dict(sorted(d.items())))
+print({it[0]: it[1] for it in sorted(d.items())})
+
 # 设置根据 元组 中的第 1 个元素排序，即 dict 的 key。
-print(sorted(d.items(), key=lambda s: s[0]))
+print(sorted(d.items(), key=lambda it: it[0]))
 
-# 设置根据 元组 中的第 2 个元素排序，即 dict 的 value。
-print(sorted(d.items(), key=lambda s: s[1]))
+# 设置根据 元组 中的第 2 个元素倒序排序，即 dict 的 value。
+print(sorted(d.items(), key=lambda it: it[1], reverse=True))
 
-# 利用 字典推导式 排序 dict，注 python3.6 +，dict 类型变为有序对象集合。
-d_o = {i[0]: i[1] for i in sorted(d.items(), key=lambda s: s[0])}
+# 排序 dict，利用 字典推导式 实现 K、V 互换。
+d_o = {it[1]: it[0] for it in sorted(d.items(), key=lambda it: it[0])}
 print(d_o)
 
 
