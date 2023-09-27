@@ -11,7 +11,7 @@ def func2(param1, param2, param3=3, *args, **kwargs):
     print(param1, param2, param3, args, kwargs)
 
 
-# 定义参数类型、返回值类型
+# 定义参数类型、返回值类型。注：当 `list[str]` 报 TypeError 异常，可修改为 `typing.List[str]`
 def func3(param1: str, param2: list[str], param3: bool = True) -> bool:
     print(f'参数1: {param1}, 参数2: {param2}, 参数3: {param3}')
     return param1 in param2
