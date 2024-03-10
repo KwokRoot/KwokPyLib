@@ -1,3 +1,20 @@
+# set 创建
+s1 = {1, 2, 3}
+print(type(s1))
+# 输出：<class 'set'>
+
+# `{}` 默认创建的是字典
+s2 = {}
+print(type(s2))
+# 输出：<class 'dict'>
+
+# 空 set 创建
+s3 = set()
+print(type(s3))
+# 输出：<class 'set'>
+
+print("*" * 36)
+
 A = set([1, 2, 3, 6])
 B = set([6, 7, 8, 9])
 
@@ -45,4 +62,5 @@ print(A.issubset(B))
 
 # A集合 是否包含 B集合
 print(A.issuperset(B))
+
 
