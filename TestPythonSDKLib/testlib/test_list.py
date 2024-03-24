@@ -32,5 +32,26 @@ print(list1.extend(list2))
 # 结果：None
 print(list1)
 print(id(list1) == before_id)
+# 结果：True
+
+
+print(f'{"*" * 9} 过滤 list {"*" * 9}')
+
+ls2 = ["PYTHON", "JAVA", "C", "NODE.JS", "JAVASCRIPT", "HTML", "VB.NET"]
+
+# ## 常规遍历过滤
+ls2_1 = []
+for l in ls2:
+    if 'JAVA' in l:
+        ls2_1.append(l)
+print(ls2_1)
+
+# ## 列表推导式 + if 过滤
+ls2_2 = [l for l in ls2 if "JAVA" in l]
+print(ls2_2)
+
+# ## 使用 `filter()` 方法过滤
+l2_3 = list(filter(lambda x: "JAVA" in x, ls2))
+print(l2_3)
 
 
