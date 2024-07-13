@@ -42,6 +42,9 @@ print(f'{"*" * 9} 获取系统编码 {"*" * 9}')
 print(sys.getdefaultencoding())
 
 
+print(f'{"*" * 9} 获取内存存储多字节顺序：小端/大端 {"*" * 9}')
+print(sys.byteorder)
+
 if __name__ == '__main__':
     pass
 
