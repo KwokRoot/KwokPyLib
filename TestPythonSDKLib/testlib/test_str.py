@@ -40,3 +40,9 @@ str_list = ["I", "Love", "Python"]
 print(" ".join(str_list))
 
 
+print("*" * 36)
+
+print(str.format("Hello {name}, you are {age} years old.", name="Alice", age=18))
+print(str.format("Hello {}, you are {} years old.", "Alice", 18))
+print(str.format("Hello {1}, you are {0} years old.", 18, "Alice"))
+
